@@ -27,5 +27,12 @@ pipeline {
                 '''
             }
         }
+       stage('Deploy to Apache') {
+    steps {
+        sh 'sudo rm -rf /var/www/html/*'
+        sh 'sudo cp -r build/* /var/www/html/'
+        sh 'sudo chown -R www-data:www-data /var/www/html'
     }
+}
+}
 }
